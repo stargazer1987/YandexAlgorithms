@@ -19,8 +19,8 @@ def rbinsearch(l, r, check, checkparams):
 
 """Task1"""
 """The board of school consists of parents, teachers and pupils. The number of parents should be not lower than 1/3 of total number of members.
-At the current moment the board consists of N-number of people, and K-number parents are there"""
-"""Define how many parents should we add to the board for our condition will be true(not lower 1/3)"""
+At the current moment the board consists of N-number of people, and K-number of parents are there"""
+"""Define how many parents should we add to the board so that our condition is true(not lower 1/3)"""
 
 """Solution"""
 def lbinsearch2(l, r, check, checkparams):
@@ -32,12 +32,12 @@ def lbinsearch2(l, r, check, checkparams):
             l = m + 1
     return l
 
-def checkendownment(m,params):
-    n,k = params
-    return (k + m) *3 >= n + m
+def checkendownment(m, params):
+    n, k = params
+    return (k + m) * 3 >= n + m
 
 """Task2"""
-"""Yuriy is going to prepare for a job interview. He choose N-number of tasks. On the first day he solve K-number of task.
+"""Yuriy is going to prepare for a job interview. He chose N-number of tasks. On the first day he solve K-number of task.
 Each next day he solve one task more than previous day. Define how many days Yuriy will spend for preparation"""
 
 """Solution"""
@@ -50,13 +50,13 @@ def lbinsearch3(l, r, check, checkparams):
             l = m + 1
     return l
 
-def checkendownment2(days,params):
-    n,k = params
-    return (k + (k+ days - 1)) * days // 2 >= n
+def checkendownment2(days, params):
+    n, k = params
+    return (k + (k + days - 1)) * days // 2 >= n
 
 """Task3"""
 """Mikhail gives lectures. There is a board size of W*H sentimeters. He need to place N-number of square stickers with cheat sheets on it. The len of sides should be int numbers"""
-"""Define a max len of side for sticker, in the way that all stickers will placed on the board"""
+"""Define a max len of side for a sticker, the way that all stickers will be placed on the board"""
 
 """Solution"""
 def rbinsearch2(l, r, check, checkparams):
@@ -68,8 +68,8 @@ def rbinsearch2(l, r, check, checkparams):
             l = m + 1
     return l
 
-def checkstickers(size,params):
-    n,w,h = params
+def checkstickers(size, params):
+    n, w, h = params
     return (w//size) * (h//size) >= n
 
 
@@ -79,12 +79,12 @@ def checkstickers(size,params):
 If there is no such number we should return number N"""
 
 """Solution"""
-def checkisge(index,params):
+def checkisge(index, params):
     seq, x = params
-    return seq[index] >=x
+    return seq[index] >= x
 
-def findfirstge(seq,x):
-    ans = lbinsearch(0, len(seq) -1, checkisge,(seq,x))
+def findfirstge(seq, x):
+    ans = lbinsearch(0, len(seq) -1, checkisge,(seq, x))
     if seq[ans] < x:
         return len(seq)
     return ans
@@ -95,16 +95,16 @@ def findfirstge(seq,x):
 
 """Solution"""
 
-def checkisgt2(index,params):
+def checkisgt2(index, params):
     seq, x = params
-    return seq[index] >x
+    return seq[index] > x
 
-def checkisge2(index,params):
+def checkisge2(index, params):
     seq, x = params
-    return seq[index] >=x
+    return seq[index] >= x
 
-def findfirst2(seq,x,check):
-    ans = lbinsearch(0, len(seq) -1, check,(seq,x))
+def findfirst2(seq, x, check):
+    ans = lbinsearch(0, len(seq) -1, check,(seq, x))
     if not check(ans, (seq, x)):
         return len(seq)
     return ans
@@ -131,7 +131,7 @@ def fbinsearch(l, r, eps, check, checkparams):
         if check(m, checkparams):
             r = m
         else:
-            l =m
+            l = m
     return l
 
 x = 12
@@ -144,7 +144,7 @@ def checkcredit(mpay, params):
     for i in range(periods):
         percay = creditsum * (mperc / 100)
         creditsum -= mpay - percay
-    return creditsum <=0
+    return creditsum <= 0
 
 def fbinsearch2(l, r, eps, check, checkparams):
     while l + eps < r:
@@ -152,7 +152,7 @@ def fbinsearch2(l, r, eps, check, checkparams):
         if check(m, checkparams):
             r = m
         else:
-            l =m
+            l = m
     return l
 
 
@@ -169,37 +169,25 @@ Each cyclist has his own constant speed V1, V2, .... Vn meters per second. All c
 
 """Solution"""
 """Define a function dist(t) which with O(N) difficulty will define a distance between the leader and the last cyclist at the moment of time t.
-If dist(t+eps)>dist(t), than our function is rasing and we need to move our left border of the search, otherwise - move right border"""
+If dist(t+eps) > dist(t), then our function is rasing and we need to move our left border of the search, otherwise - move right border"""
 
-def dist(t,params):
+def dist(t, params):
     x, v = params
     minpos = maxpos = x[0] +v[0]*t
     for i in range(1,len(x)):
         nowpos = x[i] +v[i]*t
-        minpos = min(minpos,nowpos)
-        maxpos = max(maxpos,nowpos)
+        minpos = min(minpos, nowpos)
+        maxpos = max(maxpos, nowpos)
     return maxpos - minpos
 
-def checkasc(t,eps,params):
-    return dist(t + eps,params) >= dist(t, params)
+def checkasc(t, eps, params):
+    return dist(t + eps, params) >= dist(t, params)
 
-def fbinsearch3(l,r,eps,checkasc,params):
-    while l+ eps < r:
-        m =(l + r)/2
-        if checkasc(m,eps,params):
-            r=m
+def fbinsearch3(l, r, eps, checkasc, params):
+    while l + eps < r:
+        m = (l + r)/2
+        if checkasc(m, eps, params):
+            r = m
         else:
-            l =m
+            l = m
     return l
-
-
-
-
-
-
-
-
-
-
-
-
