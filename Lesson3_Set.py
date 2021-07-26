@@ -12,7 +12,7 @@ def add(x):
 """Find an element in our set"""    
 def find(x):
     for now in newset[x % setsize]:
-        if now ==x:
+        if now == x:
             return True
     return False
 
@@ -23,7 +23,7 @@ def delete(x):
         if xlist[i] == x:
             # a,b = b,a - swap(a,b) - usual for C++
             #xlist[i], xlist[len(xlist) - 1] = xlist[len(xlist) - 1], xlist[i]
-            xlist[i] =xlist[len(xlist) - 1]
+            xlist[i] = xlist[len(xlist) - 1]
             xlist.pop()
             return
 """Task 1""" 
@@ -55,12 +55,12 @@ print(twotermswithsumx2([2,3,3,4,5,7,1], 6))
 """Task 2"""
 """Here is a dictionary with N words, len of each word is not greater(>) than K""" 
 """For every word(total value of words - M) in the text(len < K) one letter can be skipped"""
-"""We should say for every word(with a possible skipped letter) is it in our dictionary or no"""     
+"""We should say for every word(with a possible skipped letter) whether it is in our dictionary or not"""     
 
 """Solution with O(NK**2 + M) difficulty"""
 def wordsindict(dictionary,text):
-    goodwords = set(dictionary) # define a set of word which were in the dictionary
-    for word in dictionary: # run through the words in dictionary
+    goodwords = set(dictionary) # define a set of words which were in the dictionary
+    for word in dictionary: # run through the words in the dictionary
         for delpos in range(len(word)): # run through the word 
             goodwords.add(word[:delpos] + word[delpos+1:]) # add to the set concatenation of slices without delpos
     
