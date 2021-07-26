@@ -1,15 +1,15 @@
 def countsort(seq):
     minval = min(seq) # find minimum in our seq
     maxval = max(seq) # find maximum in our seq
-    k = (maxval - minval + 1) # find k as a result of subtraction between max and min in our seq +1
+    k = (maxval - minval + 1) # find k as a result of subtraction between max and min in our seq + 1
     count = [0] * k # create an array with 0's multiply k-times
     for now in seq: # for each element in our seq
-        count[now - minval] +=1 # we add 1 to the block in our array with number equal to the result of subtraction between current element and minimum
+        count[now - minval] += 1 # we add 1 to the block in our array with number equal to the result of subtraction between current element and minimum
     nowpos = 0 # set a new variable with value 0
     for val in range(0, k): # run through values of our blocks in array
         for i in range(count[val]): # run through indexes of blocks with values
             seq[nowpos] = val + minval # sort an elements, add a value of the block to the minimum
-            nowpos += 1 # change position +1
+            nowpos += 1 # change position + 1
     return seq
             
 print (countsort([23,15,8,99,155,6,7,11,7]))
@@ -17,16 +17,16 @@ print (countsort([23,15,8,99,155,6,7,11,7]))
             
 """Task 1"""
 """Here are two numbers X, Y without 0 at first position"""
-""" We need to check is it possible to get a second number from the first one, making changes of num positions"""
+""" We need to check whether it is possible to get a second number from the first one, making changes of num positions"""
 
 
 def isdigitpermutation(x,y):
     def countdigits(num):
-        digitcount = [0] *10 # we make an array with 10 zeros
+        digitcount = [0] * 10 # we make an array with 10 zeros
         while num > 0: # while our num is greater (>1) than 0
             lastdigit = num % 10 # we save a last number of it in the the variable (modulo) 
-            digitcount[lastdigit] +=1 # add an 1 to to the box in the array with index of our variable
-            num //=10 # an a new number will be a result of the float division by 10
+            digitcount[lastdigit] += 1 # add an 1 to to the box in the array with index of our variable
+            num //= 10 # and a new number will be a result of the float division by 10
         return digitcount # we return an array
     
     digitsx = countdigits(x) # count a number of occurrences for each digit in our first number
@@ -53,7 +53,7 @@ def countbeatingrooks(rookcoords):
     def addrook(roworcol, key):
         if key not in roworcol:
             roworcol[key] = 0
-        roworcol[key] +=1
+        roworcol[key] += 1
     
     def countpairs(roworcol):
         pairs = 0
@@ -66,7 +66,7 @@ def countbeatingrooks(rookcoords):
     for row, col in rookcoords:
         addrook(rooksinrow, row)
         addrook(rooksincol, col)
-    return countpairs(rooksinrow) +countpairs(rooksincol)
+    return countpairs(rooksinrow) + countpairs(rooksincol)
 
 print (countbeatingrooks([(3,4),(3,5),(4,3),(6,8),(10,10)]))
         
@@ -108,7 +108,7 @@ def printchart(s):
 printchart("Hello world!")
 
 """Task 4"""
-"""Group a words by the same letters"""
+"""Group words by the same letters"""
 """Sample Input: ["eat", "tea", "tan", "ate", "nat", "bat"]"""
 """Sample Output: [["ate", "eat", "tea",], ["nat", "tan"], ["bat"]]"""
   
@@ -128,7 +128,7 @@ def groupwords(words):
 print(groupwords(["eat", "tea", "tan", "ate", "nat", "bat"]))
 
 #  We suppose if len of word will be greater than N, sort will take O(NlogN)
-#  Amount of different chars in  word is K <=N, We can count amount of each one for O(N) difficulty
+#  Amount of different chars in  word is K <= N, We can count amount of each one for O(N) difficulty
 #  And then sort for O(KlogK), theoretically...
 
 """Solution2"""
