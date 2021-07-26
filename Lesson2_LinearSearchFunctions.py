@@ -15,9 +15,9 @@ for i in range(len(seq1)-1,-1,-1):
  position of x in it"""
  
 def findx(seq, x):
-    for i in range(0,len(seq)-1):# run through the indexes from 0! till the end
+    for i in range(0,len(seq)-1): # run through the indexes from 0! till the end
         ans = -1 # put some value to make a check (to be sure that we meet an element first time)
-        if ans==-1 and seq[i] == x: # if we meet it first time and the element is the one we search for
+        if ans == -1 and seq[i] == x: # if we meet it first time and the element is the one we search for
             ans = i # put an index of the element into the answer
             return ("pos:", ans) # return position
 
@@ -31,7 +31,7 @@ print(findx([2,7,8,0,3,5,15,7,0,5,15,10,11],5))
 def findrightx(seq, x):
     for i in range(len(seq)-1, 0, -1):# run through the indexes from the end to 0!
         ans = -1 # put some value to make a check (to be sure that we meet an element first time)
-        if ans==-1 and seq[i] == x: # if we meet it first time and the element is the one we search for
+        if ans == -1 and seq[i] == x: # if we meet it first time and the element is the one we search for
             ans = i # put an index of the element into the answer
             return ("pos:", ans) # return position
         
@@ -58,10 +58,10 @@ def findmax2(seq):
     max1 = max(seq[0],seq[1]) # find a max from elements on indexes 0,1 and set a value to variable max1
     max2 = min(seq[0],seq[1]) # find a min from elements on indexes 0,1 and set a value to variable max2
     for i in range(2,len(seq)): # run through the indexes from 2 till the end
-        if seq[i] > max1: # compare current element with value of max1, and if it is greater (>) then
+        if seq[i] > max1: # compare current element with value of max1, and if it is greater (>) than max1
             max2 = max1 # set a value of max1 to variable max2 then
             max1 = seq[i] # set a value of current element to variable max1
-        elif seq[i] > max2: # also if value of current element is is greater (>) then value of variable max2
+        elif seq[i] > max2: # also if value of current element is greater (>) than value of variable max2
                 max2 = seq[i] # set a value of current element to variable max2
     return max2 # return value of variable max2
     
@@ -72,12 +72,12 @@ print(findmax2([2,7,8,0,3,5,15,16,16,7,0,5,15,10,11]))
 """Find a minimum even number or return -1 if there is no such number"""
 
 def findmineven(seq):
-    ans =-1 # put some value to make a check (to be sure that we meet an element first time)
+    ans = -1 # put some value to make a check (to be sure that we meet an element first time)
     """flag = False""" # also possible and better way, create a boolean variable
     for i in range(len(seq)): # run through the elements
-        if seq[i]%2 == 0 and (ans == -1 or seq[i] < ans): # or use this statement - (not flag or seq[i] < ans): # if modulo = 0 and also if we meet an element first time or value of element is lower (<) then value in variable ans
+        if seq[i]%2 == 0 and (ans == -1 or seq[i] < ans): # or use this statement - (not flag or seq[i] < ans): # if modulo = 0 and also if we meet an element first time or value of element is lower (<) than value in variable ans
             ans = seq[i] # set a value of element to variable ans
-            #and also this statement -(flag = True) # change a value of boolean variable to True
+            #and also this statement - (flag = True) # change a value of boolean variable to True
     return ans # return value of variable ans
     
 print(findmineven([7,1,3,5,15,7,16,1,5,15,11]))    
@@ -100,7 +100,7 @@ print(shortwords(["baba","ba","la","lollo","no","yes","go"]))
 
 
 """Task7"""
-""" Pitecraft! We have got an island which is made of blocks 1x1 with different height of columns.Outside there is the sea."""
+""" Pitecraft! We have got an island which is made of blocks 1x1 with different height of columns. Outside there is the sea."""
 """ The rain fell down, and after it all of our lowlands are full of water. Excessive water flows directly to the sea, water level stays the same """
 """ Find a number of blocks which consists of the water"""
 def isleflood(h):
@@ -108,15 +108,15 @@ def isleflood(h):
     for i in range(len(h)):# run through the indexes of all elements(blocks)
         if h[i] > h[maxpos]:# if value of the current element is greater (>) than value of element with index maxpos(0 index first turn):
             maxpos = i # rewrite the index of max element, and set to index of current element
-    ans =0 # set a value (0) to new variable answer (here we are collecting blocks of water)
+    ans = 0 # set a value (0) to new variable answer (here we are collecting blocks of water)
     nowm = 0 # set a value (0) - to new variable nowm (new maximum)
     for i in range(maxpos): # run through the indexes of all elements from the left till our maxpos(index of max element)
-        if h[i] > nowm: # if value of the current element is greater (>) than value of element nowm(0  first turn):
+        if h[i] > nowm: # if value of the current element is greater (>) than value of element nowm(0 - first turn):
             nowm = h[i] # set a value of current element to the variable nowm
-        ans += nowm-h[i] # add to the total value of blocks of water(variable ans) the difference between nowm(new maximum) and current element
+        ans += nowm - h[i] # add to the total value of blocks of water(variable ans) the difference between nowm(new maximum) and current element
     nowm = 0 # once again set a value (0) - to new variable nowm (new maximum)
     for i in range(len(h)-1,maxpos,-1):# run through the indexes of all elements from right till our maxpos(index of max element)
-        if h[i] > nowm: # if value of the current element is greater (>) than value of element nowm(0  first turn):
+        if h[i] > nowm: # if value of the current element is greater (>) than value of element nowm(0 - first turn):
             nowm = h[i] # set a value of current element to the variable nowm
         ans += nowm - h[i] # add to the total value of blocks of water(variable ans) the difference between nowm(new maximum) and current element
     return ans # return value of total blocks of water
@@ -124,7 +124,7 @@ def isleflood(h):
 print(isleflood([7,1,3,5,15,7,16,1,5,15,11]))
 
 """Task 8"""
-""" RLE. Here is a string of letters A-Z. It can be empty."""
+""" RLE. Here is a string of letters A-Z. It can be empty"""
 """ We need to write a function which will return the string without duplicates, and replace them with a values of total number of duplicates for each char!"""
 """ At first, let's see how to solve an easier problem, We just want to replace duplicates"""
 def easypeasy(s):
@@ -157,8 +157,8 @@ def rle(s):
     ans.append(pack(s[lastpos],len(s)-lastpos)) # add call a function pack and add a result of it to list[] ans 
     return "".join(ans)  #concatenate chars without space
 """How pack function is working here. First time we put as arguments lastsym on first place and result of subtraction between current index(i)
- and index of last position as a second argument. If this result is greater (>) 1 we return lastsym + string value of previous subtraction (this result). If it is not true, we return lastsym"""
+ and index of last position as a second argument. If this result is greater (>) than 1 we return lastsym + string value of previous subtraction (this result). If it is not true, we return lastsym"""
 """Second time after the loop we call this function again. And put as arguments a char with index of lastpos at first place, and as a second argument we put the result of subtraction between value of len(s)
- and index of last position. That way we check if lastsym has duplicates and if it is so we add a number of them to lastsym or just return lastsym"""    
+ and index of last position. That way we check if lastsym has duplicates and if it is so, we add a number of them to lastsym or just return lastsym"""    
     
 print(rle("AAAoooooEEEjjjKKlolOKoooKK")) 
