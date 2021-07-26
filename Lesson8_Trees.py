@@ -6,7 +6,7 @@ def initmemory(maxn):
         memory.append([0, i+1, 0])
     return [memory, 0]
 
-def newmode(memstruct):
+def newnode(memstruct):
     memory, firstfree = memstruct
     memstruct[1] = memory[firstfree][1]
     return firstfree
@@ -79,7 +79,7 @@ def add(memstruct, root, x):
 
 """Create a tree and searching through the tree"""
 """Having a serialized tree description, like DUDUUUDDU, we need to make a code for all of the leaves"""
-"""D - means that we go to the leftmost unvisited child(we suppose that there are two child - 2 or there aren't any of them - 0)"""
+"""D - means that we go to the leftmost unvisited child (we suppose that there are two child - 2 or there aren't any of them - 0)"""
 """U - means that we go up till we go from the right child. If we came to the top from the left child - we go directly to the right child"""
 
 def maketree(serialized):
@@ -94,7 +94,7 @@ def maketree(serialized):
             while nownode['type'] == 'right':
                 nownode = nownode['up']
             nownode = nownode['up']
-            newnode ={'left': None, 'right': None, 'up': nownode, 'type': 'right'}
+            newnode = {'left': None, 'right': None, 'up': nownode, 'type': 'right'}
             nownode['right'] = newnode
             nownode = newnode
     return tree
@@ -112,21 +112,3 @@ def traverse(root, prefix):
     ans.extend(traverse(root['right'], prefix))
     prefix.pop()
     return ans
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
