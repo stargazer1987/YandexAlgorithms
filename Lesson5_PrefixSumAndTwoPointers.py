@@ -1,6 +1,6 @@
 """RSQ Solution"""
 def makeprefixsum(nums):
-    prefixsum = [0] *(len(nums) + 1)
+    prefixsum = [0] * (len(nums) + 1)
     for i in range(1, len(nums) + 1):
         prefixsum[i] = prefixsum[i-1] + nums[i-1]
     return prefixsum
@@ -8,7 +8,7 @@ def makeprefixsum(nums):
 print(makeprefixsum([2,3,6,8,9]))
 
 def rsq(prefixsum, l, r):
-    return prefixsum[r]-prefixsum[l]
+    return prefixsum[r] - prefixsum[l]
 
 print(rsq(makeprefixsum([2,3,6,8,9]),3,5))
 
@@ -22,7 +22,7 @@ def countzeroes(nums, l, r):
     cnt = 0
     for i in range(l,r):
         if nums[i] == 0:
-            cnt +=1
+            cnt += 1
     return cnt
 
 
@@ -30,7 +30,7 @@ def countzeroes(nums, l, r):
 """For each prefix we count number of zeroes on it(prefixzeroes)"""
 """That way, an answer for half-interval [L,R) will be: prefixzeroes[R] - prefixzeroes[L]"""
 def makeprefixzeroes(nums):
-    prefixzeroes =[0] *(len(nums) +1)
+    prefixzeroes =[0] * (len(nums) +1)
     for i in range(2, len(nums) +1):
         if nums[i-1] == 0:
             prefixzeroes[i] = prefixzeroes[i-1] + 1
@@ -45,7 +45,7 @@ def countzeroes1(prefixzeroes, l, r):
 """Here is a sequence with len N. We need to find a number of intervals with 0-sum"""
 
 """Solution 1 O(N^3) difficulty"""
-"""Search for all of the Beginnings and Endings for an interval and count a sum of its elements"""
+"""Search for all of the Beginnings and Endings for an interval and count a sum of it's elements"""
 def countzerosumranges(nums):
     cntranges = 0
     for i in range(len(nums)):
@@ -54,12 +54,12 @@ def countzerosumranges(nums):
             for k in range(i,j):
                 rangesum += nums[k]
             if rangesum == 0:
-                cntranges +=1
+                cntranges += 1
     return cntranges
 
 
 """Solution 2 O(N^2) difficulty"""
-"""Search for all of the Beginnings and will move and Ending for an inteval and count a sum of its elements"""
+"""Search for all of the Beginnings and will move and Ending for an inteval and count a sum of it's elements"""
 def countzerosumranges2(nums):
     cntranges = 0
     for i in range(len(nums)):
@@ -67,12 +67,12 @@ def countzerosumranges2(nums):
         for j in range(i, len(nums)):
                 rangesum += nums[j]
                 if rangesum == 0:
-                    cntranges +=1
+                    cntranges += 1
     return cntranges
 
 """Solution 3 O(N) difficulty"""
 """Lets count a prefixsums. Same prefixsums means that the sum of the elements on interval with beginning and ending
- on positions where prefixsums is the same will be equal to zero"""
+ on positions where prefixsums are the same will be equal to zero"""
 def countprefixsums(nums):
     prefixsumbyvalue = {0 : 1} # it means that sequence with sum 0 we met 1 time 
     nowsum = 0
@@ -80,7 +80,7 @@ def countprefixsums(nums):
         nowsum += now
         if nowsum not in prefixsumbyvalue:
             prefixsumbyvalue[nowsum] = 0
-        prefixsumbyvalue[nowsum] +=1 # for an element in our dict with current prefixsum we raise a number of appearances by 1
+        prefixsumbyvalue[nowsum] += 1 # for an element in our dict with current prefixsum we raise a number of appearances by 1
     return prefixsumbyvalue
 
 def countzerosumranges3(prefixsumbyvalue):
@@ -101,7 +101,7 @@ def cntpairswithdiffgtk(sortednums, k):
     for first in range(len(sortednums)):
         for last in range(first, len(sortednums)):
             if sortednums[last] - sortednums[first] > k:
-                cntpairs +=1
+                cntpairs += 1
     return cntpairs
 
 """Solution 2 O(N) difficulty"""
@@ -111,8 +111,8 @@ def cntpairswithdiffgtk2(sortednums, k):
     cntpairs = 0
     last = 0
     for first in range(len(sortednums)):
-        while last < len(sortednums) and sortednums[last] - sortednums[first] <=k: # conditions check goes from left to right, so if the first statement isn't true the second one won't be called
-            last +=1
+        while last < len(sortednums) and sortednums[last] - sortednums[first] <= k: # conditions check goes from left to right, so if the first statement isn't true the second one won't be called
+            last += 1
         cntpairs += len(sortednums) - last
     return cntpairs
 
@@ -123,13 +123,13 @@ We have a sorted sequence with len N - professionalism of players. We need to fi
 
 """Solution 1"""
 def bestteamsum(players):
-    bestsum =0
+    bestsum = 0
     nowsum = 0
     last = 0
     for first in range(len(players)):
         while last < len(players) and (last == first or players[first] + players [first + 1] >= players[last]):
             nowsum += players[last]
-            last +=1
+            last += 1
         bestsum = max(bestsum, nowsum)
         nowsum -= players[first]
     return bestsum
@@ -178,14 +178,3 @@ def merge2(nums1, nums2):
 
 
 print(merge2([2,3,15,99,100,101,102,102],[66,77,78,78,79,200]))
-
-
-
-
-
-
-
-
-
-
-
